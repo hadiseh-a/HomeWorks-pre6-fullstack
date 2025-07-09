@@ -1,9 +1,11 @@
-.page-content {
-  margin-top: 70px;       /* ارتفاع Navbar */
-  margin-left: 250px;     /* عرض Sidebar در دسکتاپ */
-  padding: 1.5rem;
+body {
+  background-color: #d0d1d2;
 }
 
+.page-content {
+  margin-top: -925px;
+  margin-left: 250px;
+}
 @media (max-width: 991px) {
   .page-content {
     margin-left: 0;

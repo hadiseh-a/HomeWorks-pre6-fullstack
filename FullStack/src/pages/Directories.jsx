@@ -1,7 +1,11 @@
-function Directories() {
+import Header from "../components/Header";
+
+function Directories({ dirctory }) {
   return (
-    <div>Directories</div>
-  )
+    <>
+      <Header title={`${dirctory}'s Tasks (3 tasks)`} />
+    </>
+  );
 }
 
-export default Directories
+export default Directories;

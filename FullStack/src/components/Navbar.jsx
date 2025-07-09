@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="top-bar-container d-flex align-items-center justify-content-between px-4 py-3 shadow-sm bg-white flex-wrap gap-3 ">
+      <div className="top-bar-container d-flex align-items-center justify-content-between px-4 py-3  flex-wrap gap-3 ">
         {/* دکمه منوی همبرگری فقط در موبایل */}
         <div className="d-flex align-items-center gap-2 order-sm-0 order-0 order-md-0 ">
           <Button variant=" d-lg-none" onClick={() => setShowSidebar(true)}>

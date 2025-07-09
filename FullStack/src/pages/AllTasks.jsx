@@ -1,7 +1,11 @@
+import Header from "../components/Header";
+
 function AllTasks() {
   return (
-    <div>AllTasks</div>
-  )
+    <>
+      <Header title={"All Tasks (3 tasks)"} />
+    </>
+  );
 }
 
-export default AllTasks
+export default AllTasks;

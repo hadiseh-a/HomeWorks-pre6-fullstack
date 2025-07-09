@@ -1,6 +1,10 @@
+import Header from "../components/Header"
+
 function CompletedTasks() {
   return (
-    <div>CompletedTasks</div>
+     <>
+      <Header title={"Completed Tasks (3 tasks)"} />
+    </>
   )
 }
 

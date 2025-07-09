@@ -1,0 +1,30 @@
+.main-content {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+/* تسک کارت عمومی */
+.task-card {
+  border: none;
+  border-radius: 12px;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* تسک کامل‌شده */
+.task-card.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 991px) {
+  .main-content {
+    margin-left: 0;
+    padding: 90px 1rem 1rem;
+  }
+}
