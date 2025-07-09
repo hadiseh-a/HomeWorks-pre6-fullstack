@@ -1,0 +1,86 @@
+.top-bar-container {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-box {
+  max-width: 280px;
+}
+
+.search-input {
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px 0 0 10px;
+  font-size: 0.95rem;
+}
+
+.search-icon {
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  color: #777;
+}
+
+.date-text {
+  font-size: 1rem;
+  color: #222;
+  order: 2;
+}
+
+.btn-add-task {
+  background-color: #9b5de5;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  order: 3;
+}
+
+.btn-add-task:hover {
+  background-color: #864bdc;
+}
+
+.navbar-left-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  order: 1;
+}
+
+.todo-title {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #000;
+}
+
+@media (max-width: 991px) {
+  .top-bar-container {
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    max-width: 100%;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 590px) {
+  .btn-add-task {
+    display: none;
+  }
+}
