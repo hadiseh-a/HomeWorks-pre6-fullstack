@@ -1,12 +1,14 @@
 .sidebar {
-  width: 250px;
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: #efefef;
   overflow-y: auto;
-  z-index: 1050;
+  z-index: 1060;
+}
+.humberger {
+  background: #d0d1d2;
 }
 
 /* تیتر بالا */
@@ -14,7 +16,7 @@
   color: #6f42c1;
 }
 
-/* ✅ دکمه Add New Task */
+/* دکمه Add New Task */
 .btn-add-task {
   background-color: #9b5de5;
   border: none;
@@ -34,7 +36,7 @@
   color: white;
 }
 
-/* ✅ لینک‌های ساده (نه دکمه‌ای) */
+/* لینک‌ها */
 .link-item {
   color: #444;
   padding: 10px 16px;
@@ -48,25 +50,23 @@
   margin-bottom: 4px;
 }
 
-/* ✅ حالت hover */
 .link-item:hover {
   background-color: #f1f1f1;
   color: #dc3545;
 }
 
-/* ✅ حالت active - قرمز با بردر چپ */
 .link-item.active {
   background-color: #ffe6e6;
   border-right: 4px solid #dc3545;
-  border-left: none;
   border-radius: 0;
   color: #dc3545;
 }
+
+/* آکاردئون directories */
 .directories {
   background-color: #efefef !important;
 }
 
-/* دکمه New در directories */
 .button-new {
   display: block;
   width: 100%;
@@ -86,7 +86,6 @@
   color: #6f42c1;
 }
 
-/* Accordion style */
 .accordion-button {
   padding: 10px 16px;
   font-size: 0.95rem;
@@ -100,39 +99,24 @@
   background-color: #f5f0ff !important;
   color: #6f42c1;
 }
+
 .directory-link {
   color: #444;
   padding: 8px 16px;
-  border-radius: 0;
   text-decoration: none;
-  transition: all 0.2s ease;
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-.directory-link {
-  color: #444;
-  padding: 8px 16px;
-  border-radius: 0;
-  text-decoration: none;
-  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 4px;
-  position: relative;
 }
 
-/* ظاهر hover */
 .directory-link:hover {
   background-color: #f1f1f1;
   color: #dc3545;
 }
 
-/* ظاهر فعال */
 .directory-link.active {
   background-color: #ffe6e6;
   border-right: 4px solid #dc3545;
@@ -140,18 +124,15 @@
   color: #dc3545;
 }
 
-/* آیکون‌های مخفی در حالت عادی */
 .dir-actions {
   display: none;
   align-items: center;
 }
 
-/* فقط هنگام هاور آیکون‌ها نشان داده می‌شوند */
 .directory-link:hover .dir-actions {
   display: flex;
 }
 
-/* ظاهر آیکون‌ها */
 .icon-action {
   color: #888;
   cursor: pointer;
@@ -162,5 +143,3 @@
 .icon-action:hover {
   color: #6f42c1;
 }
-
-

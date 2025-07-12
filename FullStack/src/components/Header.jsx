@@ -6,8 +6,8 @@ import { Container } from "react-bootstrap";
 
 function Header({ title }) {
   return (
-    <Container className="px-4">
-      <h3 className="mt-4">{title}</h3>
+    <Container >
+      <h3 className="mt-4 ">{title}</h3>
       <div className="d-flex justify-content-between mt-4">
         <div>
           <CiViewList size={25}/>

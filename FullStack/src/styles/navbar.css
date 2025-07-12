@@ -1,8 +1,6 @@
 .top-bar-container {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 250px;
-  right: 0;
   background-color: #d0d1d2;
   z-index: 1040;
   display: flex;

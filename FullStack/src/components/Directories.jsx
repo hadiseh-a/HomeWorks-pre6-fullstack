@@ -1,30 +1,20 @@
-import React from "react";
 import { Accordion } from "react-bootstrap";
 import { Folder, PlusCircle, Pencil, Trash } from "react-bootstrap-icons";
 import { NavLink } from "react-router-dom";
-import "../styles/sidebar.css";
 
 const Directories = ({ onLinkClick }) => {
   return (
-    <Accordion className="mt-3 ">
-      <Accordion.Item eventKey="0" defaultChecked className="directories">
+    <Accordion className="mt-3">
+      <Accordion.Item eventKey="0" className="directories">
         <Accordion.Header>
           <Folder className="me-2" /> Directories
         </Accordion.Header>
         <Accordion.Body className="ps-2">
-          <NavLink
-            to="/dir/main"
-            onClick={onLinkClick}
-            className="directory-link position-relative"
-          >
+          <NavLink to="/dir/main" className="directory-link" onClick={onLinkClick}>
             Main
           </NavLink>
 
-          <NavLink
-            to="/dir/secondary"
-            onClick={onLinkClick}
-            className="directory-link position-relative"
-          >
+          <NavLink to="/dir/secondary" className="directory-link" onClick={onLinkClick}>
             Secondary
             <span className="dir-actions">
               <Pencil className="me-2 icon-action" />
@@ -32,7 +22,6 @@ const Directories = ({ onLinkClick }) => {
             </span>
           </NavLink>
 
-          {/* دکمه New */}
           <div className="mt-3">
             <div className="button-new">
               <PlusCircle size={16} /> New
