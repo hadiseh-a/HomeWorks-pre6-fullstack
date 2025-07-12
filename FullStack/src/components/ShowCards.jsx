@@ -3,7 +3,7 @@ import TaskCard from "./TaskCard";
 
 function ShowCards({tasks}) {
   return (
-    <Container className="d-flex gap-4 flex-wrap align-content-between mt-5">
+    <Container className="d-flex gap-4 flex-wrap align-content-between mt-4">
       {tasks.map((task) => (
         <TaskCard
           title={task.title}

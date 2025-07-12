@@ -40,7 +40,7 @@ function TaskCard({ title, description, deadline, important, completed }) {
           </div>
           <small className="text-secondary d-flex  align-items-center">
             <RiCalendarCheckLine />
-            {`${deadLine.getUTCDate()}/${deadLine.getUTCMonth()+1}/${deadLine.getUTCFullYear()}`}
+            {` ${deadLine.getUTCDate()}/${deadLine.getUTCMonth()+1}/${deadLine.getUTCFullYear()}`}
           </small>
         </div>
 

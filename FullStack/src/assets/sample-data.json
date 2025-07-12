@@ -1,75 +1,85 @@
 [
-   {
+  {
     "_id": "234234232r2e34234234",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
-    "completed": false,
-    "important": true,
+    "completed": true,
+    "important": false,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342346234",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "1234234232r234234234",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "2342314232r234234234",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342134234",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342342344",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342342314",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342342349",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342324234",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342334234",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
     "deadline": "2024-10-20T00:00:00Z"
-  },{
+  },
+  {
     "_id": "234234232r2342342334",
     "title": "Complete Backend Homework",
     "description": "Implement CRUD operations for directory and task collections",

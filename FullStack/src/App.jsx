@@ -28,7 +28,7 @@ function App() {
                 element={<Directories dirctory="Main" />}
               />
               <Route
-                path="/dir/secondary"
+                path="/dir/:dirctory"
                 element={<Directories dirctory="Secondary" />}
               />
             </Routes>

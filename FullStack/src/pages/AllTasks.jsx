@@ -2,16 +2,12 @@ import { Container } from "react-bootstrap";
 import Header from "../components/Header";
 import ShowCards from "../components/ShowCards";
 import { useEffect, useState } from "react";
+import { fetchData } from "../utils/fetchData";
 
 function AllTasks() {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("./src/assets/sample-data.json");
-      const data = await response.json();
-      setTasks(data);
-    }
-    fetchData();
+    fetchData("./src/assets/sample-data.json").then((data) => setTasks(data));
   }, []);
   return (
     <Container>
