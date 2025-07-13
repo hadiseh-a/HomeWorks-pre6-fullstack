@@ -14,13 +14,13 @@ const Topbar = () => {
     <>
       <Navbar className="top-bar-container d-flex align-items-center justify-content-between px-4 py-3  flex-wrap gap-3 ">
         {/* Search Box */}
-        <InputGroup className="search-box  order-last order-md-0 order-sm-last order-lg-first">
+        <InputGroup className="search-box  order-last order-md-0 order-sm-last order-lg-first ">
           <Form.Control
             placeholder="Search task"
             aria-label="Search task"
-            className="search-input"
+            className="search-input bg-light"
           />
-          <InputGroup.Text className="search-icon">
+          <InputGroup.Text className="search-icon bg-light">
             <Search />
           </InputGroup.Text>
         </InputGroup>

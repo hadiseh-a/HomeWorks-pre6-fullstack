@@ -10,11 +10,19 @@ const Directories = ({ onLinkClick }) => {
           <Folder className="me-2" /> Directories
         </Accordion.Header>
         <Accordion.Body className="ps-2">
-          <NavLink to="/dir/main" className="directory-link" onClick={onLinkClick}>
+          <NavLink
+            to="/dir/main"
+            className="directory-link"
+            onClick={onLinkClick}
+          >
             Main
           </NavLink>
 
-          <NavLink to="/dir/secondary" className="directory-link" onClick={onLinkClick}>
+          <NavLink
+            to="/dir/secondary"
+            className="directory-link"
+            onClick={onLinkClick}
+          >
             Secondary
             <span className="dir-actions">
               <Pencil className="me-2 icon-action" />

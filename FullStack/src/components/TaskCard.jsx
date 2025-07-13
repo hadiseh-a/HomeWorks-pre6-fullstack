@@ -6,7 +6,7 @@ import { FaTrash } from "react-icons/fa";
 import { RiCalendarCheckLine } from "react-icons/ri";
 
 function TaskCard({ title, description, deadline, important, completed }) {
-  const deadLine=new Date(deadline);
+  const deadLine = new Date(deadline);
 
   const [isStarred, setIsStarred] = useState(important);
   const [isCompleted, setIsCompleted] = useState(completed);
@@ -16,31 +16,33 @@ function TaskCard({ title, description, deadline, important, completed }) {
 
   return (
     <Card
-      className="shadow-sm  border-0 rounded-3 container  mx-0"
-      style={{ width: "21rem",height:"21rem" }}
+      className="shadow-sm  border-0 rounded-3 container  mx-0 bg-light flex-shrink-1 "
+      style={{ maxWidth: "18rem", height: "16rem" }}
     >
       <div className="position-relative ">
-        <div className="position-absolute top-0 end-0 translate-middle-y ">
-          <span
-            className="text-danger px-3 py-1 rounded-top-3 fw-fw-bolder"
+        <div className="position-absolute  end-0  translate-middle-y">
+          <h6
+            className="text-danger px-3 py-1 rounded-top-3 "
             style={{ backgroundColor: "#fca7a7" }}
           >
             Main
-          </span>
+          </h6>
         </div>
       </div>
       <Card.Body>
         {/* Header with actions */}
         <div className="d-flex flex-column  align-items-around">
           <div>
-            <Card.Title className="fs-5 fw-bolder mb-4">{title}</Card.Title>
-            <Card.Text className="text-muted small " style={{height:"10rem"}}>
+            <Card.Title className=" mb-2">{title}</Card.Title>
+            <Card.Text className="text-muted small " style={{ height: "5rem" }}>
               {description}
             </Card.Text>
           </div>
           <small className="text-secondary d-flex  align-items-center">
             <RiCalendarCheckLine />
-            {` ${deadLine.getUTCDate()}/${deadLine.getUTCMonth()+1}/${deadLine.getUTCFullYear()}`}
+            {` ${deadLine.getUTCDate()}/${
+              deadLine.getUTCMonth() + 1
+            }/${deadLine.getUTCFullYear()}`}
           </small>
         </div>
 

@@ -6,16 +6,16 @@ import { Container } from "react-bootstrap";
 
 function Header({ title }) {
   return (
-    <Container >
-      <h3 className="mt-4 ">{title}</h3>
+    <Container>
+      <h4 className="mt-4 ">{title}</h4>
       <div className="d-flex justify-content-between mt-4">
-        <div>
-          <CiViewList size={25}/>
-          <HiOutlineViewGrid size={25}/>
+        <div className="text-secondary">
+          <CiViewList size={20} />
+          <HiOutlineViewGrid size={20} />
         </div>
         <DropdownButton
           id="dropdown-basic-button"
-          title="Sort by"
+          title="Sort by "
           variant="light"
         >
           <Dropdown.Item href="#/action-1">Order added</Dropdown.Item>

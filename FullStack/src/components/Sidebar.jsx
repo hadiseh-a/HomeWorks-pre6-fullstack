@@ -11,7 +11,10 @@ const Sidebar = () => {
     <>
       {/* دکمه همبرگری در موبایل */}
       <div className="d-lg-none p-3">
-        <Button className="humberger border-0 text-black" onClick={() => setShowSidebar(true)}>
+        <Button
+          className="humberger border-0 text-black"
+          onClick={() => setShowSidebar(true)}
+        >
           <List size={20} />
         </Button>
       </div>

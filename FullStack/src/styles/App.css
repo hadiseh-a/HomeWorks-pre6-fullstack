@@ -1,8 +1,4 @@
 body {
   background-color: #d0d1d2;
 }
-@media (max-width: 991px) {
-    .container, .container-md, .container-sm {
-        max-width: 900px;
-    }
-}
+

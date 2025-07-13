@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { fetchData } from "../utils/fetchData";
 import { filterdTasksby } from "../utils/filtering";
 import ShowCards from "../components/ShowCards";
+import { Container } from "react-bootstrap";
 
 function ImportantTasks() {
   const [tasks, setTasks] = useState([]);
@@ -13,10 +14,10 @@ function ImportantTasks() {
   }, []);
 
   return (
-    <>
+    <Container>
       <Header title={`Important Tasks (${tasks.length} tasks)`} />
       <ShowCards tasks={tasks} />
-    </>
+    </Container>
   );
 }
 

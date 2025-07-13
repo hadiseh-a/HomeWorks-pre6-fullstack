@@ -5,7 +5,7 @@ import Topbar from "./components/Topbar";
 import AllTasks from "./pages/AllTasks";
 import ImportantTasks from "./pages/ImportantTasks";
 import CompletedTasks from "./pages/CompletedTasks";
-import UnCompletedTasks from "./pages/UnCompletedTasks";
+import UnCompletedTasks from "./pages/UncompletedTasks";
 import Directories from "./pages/Directories";
 import { Container } from "react-bootstrap";
 
@@ -17,7 +17,7 @@ function App() {
         <Container fluid className="flex-grow-1">
           <Topbar className="d-lg-inline" />
 
-          <Container className="main-aria">
+          <Container  fluid>
             <Routes>
               <Route path="/" element={<AllTasks />} />
               <Route path="/important" element={<ImportantTasks />} />

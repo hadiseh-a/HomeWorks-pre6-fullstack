@@ -16,18 +16,20 @@
 }
 
 .search-input {
-  background-color: #ffffff;
-  border: 1px solid #d1d1d1;
   border-radius: 10px 0 0 10px;
   font-size: 0.95rem;
+  border: none;
 }
 
 .search-icon {
-  background-color: #ffffff;
-  border: 1px solid #d1d1d1;
-  border-left: none;
+  border: none;
   border-radius: 0 10px 10px 0;
   color: #777;
+}
+
+.search-box:hover{
+  border:2px  #864bdc outset;
+  border-radius: 10px;
 }
 
 .date-text {

@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { fetchData } from "../utils/fetchData";
 import { filterdTasksby } from "../utils/filtering.js";
 import ShowCards from "../components/ShowCards";
+import { Container } from "react-bootstrap";
 
 function CompletedTasks() {
   const [tasks, setTasks] = useState([]);
@@ -13,10 +14,10 @@ function CompletedTasks() {
   }, []);
 
   return (
-    <>
+    <Container fluid>
       <Header title={`Completed Tasks (${tasks.length} tasks)`} />
       <ShowCards tasks={tasks} />
-    </>
+    </Container>
   );
 }
 

@@ -10,7 +10,7 @@ function AllTasks() {
     fetchData("./src/assets/sample-data.json").then((data) => setTasks(data));
   }, []);
   return (
-    <Container>
+    <Container fluid>
       <Header title={`All Tasks (${tasks.length} tasks)`} />
       <ShowCards tasks={tasks} />
     </Container>
