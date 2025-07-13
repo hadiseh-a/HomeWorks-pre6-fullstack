@@ -1,29 +1,41 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
 import AllTasks from "./pages/AllTasks";
 import ImportantTasks from "./pages/ImportantTasks";
 import CompletedTasks from "./pages/CompletedTasks";
-import UnCompletedTasks from "./pages/UnCompletedTasks";
+import UnCompletedTasks from "./pages/UncompletedTasks";
 import Directories from "./pages/Directories";
-import Navbar from "./components/Navbar";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Sidebar />
-      <Navbar />
-      <div className="page-content">
-        <Routes>
-          <Route path="/all" element={<AllTasks />} />
-          <Route path="/important" element={<ImportantTasks />} />
-          <Route path="/completed" element={<CompletedTasks />} />
-          <Route path="/uncompleted" element={<UnCompletedTasks />} />
-          <Route path="/dir/main" element={<Directories />} />
-          <Route path="/dir/secondary" element={<Directories />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className=" d-flex ">
+      <BrowserRouter>
+        <Sidebar />
+        <Container fluid className="flex-grow-1">
+          <Topbar className="d-lg-inline" />
+
+          <Container  fluid>
+            <Routes>
+              <Route path="/" element={<AllTasks />} />
+              <Route path="/important" element={<ImportantTasks />} />
+              <Route path="/completed" element={<CompletedTasks />} />
+              <Route path="/uncompleted" element={<UnCompletedTasks />} />
+              <Route
+                path="/dir/main"
+                element={<Directories dirctory="Main" />}
+              />
+              <Route
+                path="/dir/:dirctory"
+                element={<Directories dirctory="Secondary" />}
+              />
+            </Routes>
+          </Container>
+        </Container>
+      </BrowserRouter>
+    </div>
   );
 }
 

@@ -1,6 +1,5 @@
-import { Button } from "react-bootstrap";
+import { Button, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { Nav } from "react-bootstrap";
 import {
   List,
   Star,
@@ -22,7 +21,7 @@ const SidebarContent = ({ onLinkClick }) => {
       </div>
 
       <Nav className="flex-column sidebar-links">
-        <NavLink to="/all" onClick={onLinkClick} className="link-item">
+        <NavLink to="/" onClick={onLinkClick} className="link-item">
           <List className="me-2" /> All tasks
         </NavLink>
         <NavLink to="/important" onClick={onLinkClick} className="link-item">
