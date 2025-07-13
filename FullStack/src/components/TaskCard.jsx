@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, Badge } from "react-bootstrap";
+import { Card, Badge, Button, Modal } from "react-bootstrap";
 import { StarFill, Star } from "react-bootstrap-icons";
 import { IoMdMore } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
@@ -13,6 +13,14 @@ function TaskCard({ title, description, deadline, important, completed }) {
 
   const toggleStar = () => setIsStarred((prev) => !prev);
   const toggleCompleted = () => setIsCompleted((prev) => !prev);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const handleDelete = () => {
+    // حذف واقعی تسک را اینجا انجام بده
+    console.log("Deleted task:", task._id);
+    setShowDeleteModal(false);
+  };
 
   return (
     <Card
@@ -58,16 +66,50 @@ function TaskCard({ title, description, deadline, important, completed }) {
             {isCompleted ? "Completed" : "Uncompleted"}
           </Badge>
           <div className="d-flex justify-content-center align-items-center align-content-center">
-            {isStarred ? (
-              <StarFill color="red" onClick={toggleStar} />
-            ) : (
-              <Star color="gray" onClick={toggleStar} />
-            )}
-            <FaTrash className="mx-2" />
-            <IoMdMore size={20} className="align-self-center" />
+            <Button variant="link" className="p-0 text-black">
+              {isStarred ? (
+                <StarFill color="red" onClick={toggleStar} />
+              ) : (
+                <Star color="gray" onClick={toggleStar} />
+              )}
+            </Button>
+            <Button
+              variant="link"
+              size="sm"
+              className="p-0 text-black  mx-2"
+              onClick={() => setShowDeleteModal(true)}
+            >
+              <FaTrash className="text-center align-self-center" />
+            </Button>
+            <Button variant="link" className="p-0 text-black ">
+              <IoMdMore size={20} className="align-self-center" />
+            </Button>
           </div>
         </div>
       </Card.Body>
+      <Modal
+        show={showDeleteModal}
+        onHide={() => setShowDeleteModal(false)}
+        centered
+        variant="light"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Are you sure?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This task will be deleted permanently.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            style={{ backgroundColor: "#9b5de5", border: "none" }}
+            onClick={handleDelete}
+          >
+            Confirm
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Card>
   );
 }
