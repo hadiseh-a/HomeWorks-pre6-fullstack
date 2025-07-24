@@ -3,14 +3,22 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Accordion, Button, Modal, Form } from "react-bootstrap";
 import "../styles/sidebar.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addDirectory,
+  deleteDirectory,
+  editDirectory,
+} from "../store/directoriesSlice";
 
 const Directories = ({ onLinkClick }) => {
   const [activeModal, setActiveModal] = useState(null); // 'edit', 'create', 'delete'
-  const [dirName, setDirName] = useState("secondary");
+  const [dirName, setDirName] = useState("");
   const [newDirName, setNewDirName] = useState("");
   const [selectedDirectory, setSelectedDirectory] = useState(null);
+  const [indexOf, setIndexOf] = useState(-1);
 
-  const directories = ["Main", "Secondary"]; // فرضی
+  const dispatch = useDispatch();
+  const directories = useSelector((state) => state.directories);
 
   // --- Modal Handlers ---
   const openModal = (type, dir = null) => {
@@ -27,17 +35,19 @@ const Directories = ({ onLinkClick }) => {
   };
 
   const handleCreateDirectory = () => {
-    console.log("New directory:", newDirName);
+    dispatch(addDirectory(newDirName));
     closeModal();
   };
 
   const confirmDelete = () => {
-    console.log("Directory deleted:", selectedDirectory);
+    dispatch(deleteDirectory(selectedDirectory));
     closeModal();
   };
 
   const handleSave = () => {
-    console.log("Edited directory name:", dirName);
+    dispatch(editDirectory({ index: indexOf, item: dirName }));
+    console.log(indexOf);
+
     closeModal();
   };
 
@@ -55,20 +65,22 @@ const Directories = ({ onLinkClick }) => {
                 to={`/dir/${dir.toLowerCase()}`}
                 onClick={onLinkClick}
                 className="directory-link position-relative"
+                state={dir}
               >
                 {dir}
 
                 {dir !== "Main" && (
                   <span className="dir-actions">
                     <Pencil
-                      className="me-2 icon-action"
+                      className="me-2 icon-action text-danger"
                       onClick={(e) => {
                         e.preventDefault();
                         openModal("edit", dir);
+                        setIndexOf(directories.indexOf(dir));
                       }}
                     />
                     <Trash
-                      className="icon-action"
+                      className="icon-action text-danger"
                       onClick={(e) => {
                         e.preventDefault();
                         openModal("delete", dir);

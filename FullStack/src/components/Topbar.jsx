@@ -2,6 +2,10 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { PlusCircle, Search, List } from "react-bootstrap-icons";
 import "../styles/navbar.css";
 import Navbar from "react-bootstrap/Navbar";
+import { useState } from "react";
+import AddOrEditTaskModal from "./AddOrEditTaskModal";
+import { useDispatch, useSelector } from "react-redux";
+import { addTask } from "../store/tasksSlice";
 
 const Topbar = () => {
   const today = new Date().toLocaleDateString("en-US", {
@@ -9,6 +13,11 @@ const Topbar = () => {
     month: "short",
     day: "2-digit",
   });
+
+  const [showModal, setShowModal] = useState(false);
+
+  const dispatch = useDispatch();
+  const directories=useSelector((store)=>store.directories)
 
   return (
     <>
@@ -32,10 +41,21 @@ const Topbar = () => {
         </div>
 
         {/* Add Task Button */}
-        <Button className="btn-add-task d-none d-sm-inline-flex ">
+        <Button
+          className="btn-add-task d-none d-sm-inline-flex "
+          onClick={() => setShowModal(true)}
+        >
           <PlusCircle className="me-2" size={18} /> Add New Task
         </Button>
       </Navbar>
+
+      <AddOrEditTaskModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        handleSave={(data) => dispatch(addTask(data))}
+        directories={directories}
+        title="Add a task"
+      />
     </>
   );
 };

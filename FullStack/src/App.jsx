@@ -17,19 +17,15 @@ function App() {
         <Container fluid className="flex-grow-1">
           <Topbar className="d-lg-inline" />
 
-          <Container  fluid>
+          <Container fluid>
             <Routes>
               <Route path="/" element={<AllTasks />} />
               <Route path="/important" element={<ImportantTasks />} />
               <Route path="/completed" element={<CompletedTasks />} />
               <Route path="/uncompleted" element={<UnCompletedTasks />} />
               <Route
-                path="/dir/main"
-                element={<Directories dirctory="Main" />}
-              />
-              <Route
-                path="/dir/:dirctory"
-                element={<Directories dirctory="Secondary" />}
+                path="/dir/:directories"
+                element={<Directories  />}
               />
             </Routes>
           </Container>

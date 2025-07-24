@@ -1,17 +1,24 @@
 import { Container } from "react-bootstrap";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
-import { fetchData } from "../utils/fetchData";
 import ShowCards from "../components/ShowCards";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
-function Directories({ dirctory }) {
+function Directories() {
   const [tasks, setTasks] = useState([]);
+
+  const allTasks = useSelector((state) => state.tasks.taskData);
+
+  const location = useLocation();
+
   useEffect(() => {
-    fetchData("./src/assets/sample-data.json").then((data) => setTasks(data));
-  }, []);
+    setTasks(allTasks);
+  }, [allTasks]);
+
   return (
     <Container>
-      <Header title={`${dirctory}'s Tasks (${tasks.length} tasks)`} />
+      <Header title={`${location.state}'s Tasks (${tasks.length} tasks)`} />
       <ShowCards tasks={tasks} />
     </Container>
   );

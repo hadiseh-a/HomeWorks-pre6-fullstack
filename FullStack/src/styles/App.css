@@ -2,3 +2,68 @@ body {
   background-color: #d0d1d2;
 }
 
+/* استایل سفارشی برای چک‌باکس شبیه رادیو قرمز */
+.custom-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #dc3545; /* رنگ قرمز */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  margin-right: 8px;
+}
+
+.custom-checkbox input[type="checkbox"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 7px;
+  height: 7px;
+  background-color: #dc3545;
+  border-radius: 50%;
+}
+
+.modal-content {
+  background-color: #d0d1d2 !important;
+  border: none;
+  border-radius: 10px;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  background-color: #e4e5e7 !important; /* کمی روشن‌تر برای تضاد */
+  border: 1px solid #ccc;
+  color: #000;
+  border-radius: 5px;
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder {
+  color: #666;
+  opacity: 1;
+}
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+  border-color: #888;
+  box-shadow: none;
+  outline: none;
+}
+
+.card:first-child {
+  background-color: #8522fd !important;
+  color: #fff !important;
+}
+
+.card:first-child div,
+.card:first-child p,
+.card:first-child small,
+.card:first-child button,
+.card:first-child div button .firstOne {
+  color: #fff !important;
+}

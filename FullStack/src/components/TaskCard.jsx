@@ -4,21 +4,41 @@ import { StarFill, Star } from "react-bootstrap-icons";
 import { IoMdMore } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import { RiCalendarCheckLine } from "react-icons/ri";
+import AddOrEditTaskModal from "./AddOrEditTaskModal";
+import { useDispatch } from "react-redux";
+import { deleteTask, editTask } from "../store/tasksSlice";
+import { Prev } from "react-bootstrap/esm/PageItem";
 
-function TaskCard({ title, description, deadline, important, completed }) {
+function TaskCard({
+  id,
+  title,
+  description,
+  deadline,
+  important,
+  completed,
+  index,
+}) {
   const deadLine = new Date(deadline);
 
   const [isStarred, setIsStarred] = useState(important);
   const [isCompleted, setIsCompleted] = useState(completed);
-
-  const toggleStar = () => setIsStarred((prev) => !prev);
-  const toggleCompleted = () => setIsCompleted((prev) => !prev);
-
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleStar = () => {
+    setIsStarred((prev) => !prev);
+    dispatch(editTask({ id, data: { important: !isStarred } }));
+  };
+  const toggleCompleted = () => {
+    setIsCompleted((prev) => !prev);
+    dispatch(editTask({ id, data: { completed: !isCompleted } }));
+  };
+
+  const dispatch = useDispatch();
 
   const handleDelete = () => {
-    // حذف واقعی تسک را اینجا انجام بده
-    console.log("Deleted task:", task._id);
+    dispatch(deleteTask(id));
+    console.log(title, id, completed);
     setShowDeleteModal(false);
   };
 
@@ -39,12 +59,13 @@ function TaskCard({ title, description, deadline, important, completed }) {
       </div>
       <Card.Body>
         {/* Header with actions */}
-        <div className="d-flex flex-column  align-items-around">
+        <div
+          className="d-flex flex-column  align-items-around"
+          style={{ height: "10rem" }}
+        >
           <div>
             <Card.Title className=" mb-2">{title}</Card.Title>
-            <Card.Text className="text-muted small " style={{ height: "5rem" }}>
-              {description}
-            </Card.Text>
+            <Card.Text className="text-muted small ">{description}</Card.Text>
           </div>
           <small className="text-secondary d-flex  align-items-center">
             <RiCalendarCheckLine />
@@ -70,7 +91,10 @@ function TaskCard({ title, description, deadline, important, completed }) {
               {isStarred ? (
                 <StarFill color="red" onClick={toggleStar} />
               ) : (
-                <Star color="gray" onClick={toggleStar} />
+                <Star
+                  color={`${index === 0 ? "white" : "gray"}`}
+                  onClick={toggleStar}
+                />
               )}
             </Button>
             <Button
@@ -81,7 +105,11 @@ function TaskCard({ title, description, deadline, important, completed }) {
             >
               <FaTrash className="text-center align-self-center" />
             </Button>
-            <Button variant="link" className="p-0 text-black ">
+            <Button
+              variant="link"
+              className="p-0 text-black "
+              onClick={() => setShowModal(true)}
+            >
               <IoMdMore size={20} className="align-self-center" />
             </Button>
           </div>
@@ -110,6 +138,21 @@ function TaskCard({ title, description, deadline, important, completed }) {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <AddOrEditTaskModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        handleSave={(data) => dispatch(editTask({ id: id, data: data }))}
+        directories={["Main", "School", "Work"]}
+        title="edit task"
+        defaultTask={{
+          title: title,
+          description: description,
+          completed: completed,
+          important: important,
+          deadline: deadline,
+        }}
+      />
     </Card>
   );
 }

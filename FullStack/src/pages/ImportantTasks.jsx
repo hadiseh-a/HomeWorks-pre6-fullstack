@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import { fetchData } from "../utils/fetchData";
 import { filterdTasksby } from "../utils/filtering";
 import ShowCards from "../components/ShowCards";
 import { Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 function ImportantTasks() {
   const [tasks, setTasks] = useState([]);
+  const allTasks = useSelector((state) => state.tasks.taskData);
+
   useEffect(() => {
-    fetchData("./src/assets/sample-data.json").then((data) =>
-      setTasks(filterdTasksby(data, "important", true))
-    );
-  }, []);
+    const importantTasks = filterdTasksby(allTasks, "important", true);
+    setTasks(importantTasks);
+  }, [allTasks]);
 
   return (
     <Container>
