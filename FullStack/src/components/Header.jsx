@@ -3,8 +3,12 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import { CiViewList } from "react-icons/ci";
 import { Container } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { orderTasks } from "../store/tasksSlice";
 
 function Header({ title }) {
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <h4 className="mt-4 ">{title}</h4>
@@ -18,11 +22,25 @@ function Header({ title }) {
           title="Sort by "
           variant="light"
         >
-          <Dropdown.Item href="#/action-1">Order added</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Earlier first</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Later first</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Completed first</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Uncompleted first</Dropdown.Item>
+          <Dropdown.Item onClick={() => dispatch(orderTasks("Order added"))}>
+            Order added
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => dispatch(orderTasks("Earlier first"))}>
+            Earlier first
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => dispatch(orderTasks("Later first"))}>
+            Later first
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => dispatch(orderTasks("Completed first"))}
+          >
+            Completed first
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => dispatch(orderTasks("Uncompleted first"))}
+          >
+            Uncompleted first
+          </Dropdown.Item>
         </DropdownButton>
       </div>
     </Container>

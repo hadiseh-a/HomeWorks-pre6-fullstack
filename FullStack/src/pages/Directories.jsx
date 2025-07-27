@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import ShowCards from "../components/ShowCards";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { sherchingTask } from "../utils/filtering";
 
 function Directories() {
   const [tasks, setTasks] = useState([]);
 
+  const searchTerm = useSelector((state) => state.tasks.searchTerm);
   const allTasks = useSelector((state) => state.tasks.taskData);
 
   const location = useLocation();
@@ -15,6 +17,11 @@ function Directories() {
   useEffect(() => {
     setTasks(allTasks);
   }, [allTasks]);
+
+  useEffect(() => {
+    const searchedTask = sherchingTask(allTasks, searchTerm);
+    setTasks(searchedTask);
+  }, [searchTerm, allTasks]);
 
   return (
     <Container>
