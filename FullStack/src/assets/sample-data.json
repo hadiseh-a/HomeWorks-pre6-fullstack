@@ -5,7 +5,8 @@
     "description": "1 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": false,
-    "deadline": "2024-10-02"
+    "deadline": "2024-10-02T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "234234232r23426234",
@@ -13,7 +14,8 @@
     "description": "2 Implement CRUD operations for directory and task collections",
     "completed": true,
     "important": true,
-    "deadline": "2024-10-06"
+    "deadline": "2024-10-06T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "12344232r234234234",
@@ -21,7 +23,8 @@
     "description": "3 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2024-01-20"
+    "deadline": "2024-01-20T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "2342314232r234234",
@@ -29,7 +32,8 @@
     "description": "4 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2024-5-20"
+    "deadline": "2024-5-20T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "2334232r2342134234",
@@ -37,7 +41,8 @@
     "description": "5 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2022-10-20"
+    "deadline": "2022-10-20T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "23423232r2342342344",
@@ -45,7 +50,8 @@
     "description": "6 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2025-10-20"
+    "deadline": "2025-10-20T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "234234232r234234",
@@ -53,7 +59,8 @@
     "description": "7 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2023-10-20"
+    "deadline": "2023-10-20T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "24232r2342342349",
@@ -61,7 +68,8 @@
     "description": "8 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2024-08-20"
+    "deadline": "2024-08-20T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "234234232r2[342324234",
@@ -69,7 +77,8 @@
     "description": "9 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2024-09-03"
+    "deadline": "2024-09-03T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "234234232rw2342334234",
@@ -77,7 +86,8 @@
     "description": "10 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2024-10-01"
+    "deadline": "2024-10-01T00:00:00Z",
+    "dirId": "1a"
   },
   {
     "_id": "234234232r234j2342334",
@@ -85,6 +95,7 @@
     "description": "11 Implement CRUD operations for directory and task collections",
     "completed": false,
     "important": true,
-    "deadline": "2024-10-02"
+    "deadline": "2024-10-02T00:00:00Z",
+    "dirId": "1a"
   }
 ]
