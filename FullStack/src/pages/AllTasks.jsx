@@ -26,6 +26,9 @@ function AllTasks() {
     <Container fluid>
       <Header title={`All Tasks (${tasks.length} tasks)`} />
       <ShowCards tasks={tasks} />
+      {console.log(
+        `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()}`
+      )}
     </Container>
   );
 }

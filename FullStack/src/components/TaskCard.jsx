@@ -60,15 +60,9 @@ function TaskCard({
       <Card.Body>
         {/* Header with actions */}
         <div className="d-flex flex-column  align-items-around">
-          <div 
-              style={{ height: "9.5rem" }}
-          >
+          <div style={{ height: "9.5rem" }}>
             <Card.Title className=" mb-2">{title}</Card.Title>
-            <Card.Text
-              className="text-muted small "
-            >
-              {description}
-            </Card.Text>
+            <Card.Text className="text-muted small ">{description}</Card.Text>
           </div>
           <small className="text-secondary d-flex  align-items-center">
             <RiCalendarCheckLine />

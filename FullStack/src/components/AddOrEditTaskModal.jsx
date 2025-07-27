@@ -20,7 +20,7 @@ const AddOrEditTaskModal = ({
       description: "",
       completed: false,
       important: false,
-      deadline: "",
+      deadline: new Date().toISOString().split("T")[0],
       directory: directories[0] || "",
     },
   });

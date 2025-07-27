@@ -1,12 +1,25 @@
 export const filterdTasksby = (tasks, filterdBy, howBe) =>
   tasks.filter((task) => task[filterdBy] === howBe);
 
-export const sherchingTask = (tasks, searchTerm) =>
-  !searchTerm
-    ? tasks
-    : tasks.filter((task) =>
-        task.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+export const sherchingTask = (tasks, searchTerm) => {
+  if (!searchTerm) return tasks;
+
+  const term = searchTerm.toLowerCase();
+
+  const filtered = tasks.filter((task) =>
+    task.title.toLowerCase().includes(term)
+  );
+
+  return filtered.sort((a, b) => {
+    const aStarts = a.title.toLowerCase().startsWith(term);
+    const bStarts = b.title.toLowerCase().startsWith(term);
+
+    if (aStarts && !bStarts) return -1;
+    if (!aStarts && bStarts) return 1;
+    
+    return 0;
+  });
+};
 
 export const orderingTask = (tasks, orderBy) => {
   if (!orderBy || orderBy === "Order added") {
