@@ -5,25 +5,24 @@ import { IoMdMore } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import { RiCalendarCheckLine } from "react-icons/ri";
 import AddOrEditTaskModal from "./AddOrEditTaskModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTask, editTask } from "../store/tasksSlice";
-import { Prev } from "react-bootstrap/esm/PageItem";
 
-function TaskCard({
+const TaskCard = ({
   id,
   title,
   description,
   deadline,
   important,
   completed,
+  directory,
   index,
-}) {
-  const deadLine = new Date(deadline);
-
+}) => {
+  const dispatch = useDispatch();
   const [isStarred, setIsStarred] = useState(important);
   const [isCompleted, setIsCompleted] = useState(completed);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const toggleStar = () => {
     setIsStarred((prev) => !prev);
@@ -33,14 +32,14 @@ function TaskCard({
     setIsCompleted((prev) => !prev);
     dispatch(editTask({ id, data: { completed: !isCompleted } }));
   };
-
-  const dispatch = useDispatch();
-
   const handleDelete = () => {
     dispatch(deleteTask(id));
-    console.log(title, id, completed);
     setShowDeleteModal(false);
   };
+
+  const deadLine = new Date(deadline);
+
+  const directories = useSelector((state) => state.directories);
 
   return (
     <Card
@@ -53,12 +52,11 @@ function TaskCard({
             className="text-danger px-3 py-1 rounded-top-3 "
             style={{ backgroundColor: "#fca7a7" }}
           >
-            Main
+            {directory.type}
           </h6>
         </div>
       </div>
       <Card.Body>
-        {/* Header with actions */}
         <div className="d-flex flex-column  align-items-around">
           <div style={{ height: "9.5rem" }}>
             <Card.Title className=" mb-2">{title}</Card.Title>
@@ -72,7 +70,6 @@ function TaskCard({
           </small>
         </div>
 
-        {/* Footer with date and status */}
         <div className="d-flex justify-content-between align-items-center mt-3 pt-2 border-top ">
           <Badge
             bg={isCompleted ? "success" : "warning"}
@@ -105,13 +102,15 @@ function TaskCard({
             <Button
               variant="link"
               className="p-0 text-black "
-              onClick={() => setShowModal(true)}
+              onClick={() => setShowEditModal(true)}
             >
-              <IoMdMore size={20} className="align-self-center" />
+              <IoMdMore size={20} />
             </Button>
           </div>
         </div>
       </Card.Body>
+
+      {/* Delete confirmation */}
       <Modal
         show={showDeleteModal}
         onHide={() => setShowDeleteModal(false)}
@@ -136,22 +135,24 @@ function TaskCard({
         </Modal.Footer>
       </Modal>
 
+      {/* Edit / Detail modal */}
       <AddOrEditTaskModal
-        show={showModal}
-        handleClose={() => setShowModal(false)}
-        handleSave={(data) => dispatch(editTask({ id: id, data: data }))}
-        directories={["Main", "School", "Work"]}
-        title="edit task"
+        show={showEditModal}
+        handleClose={() => setShowEditModal(false)}
+        handleSave={(data) => dispatch(editTask({ id, data }))}
+        directories={directories} // اگر در HoC
         defaultTask={{
           title: title,
           description: description,
-          completed: completed,
-          important: important,
-          deadline: deadline,
+          deadline: deadline.split("T")[0],
+          completed: isCompleted,
+          important: isStarred,
+          dirId: directory._id,
         }}
+        title="Edit Task"
       />
     </Card>
   );
-}
+};
 
 export default TaskCard;

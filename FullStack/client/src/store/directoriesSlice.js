@@ -1,23 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const directoriesSlice = createSlice({
-  name: "directory",
-  initialState: ["Main"],
+  name: "directories",
+  initialState: [{ _id: "1a", type: "Main" }],
   reducers: {
     addDirectory: (state, action) => {
-      state.push(action.payload);
+      state.push({ _id: Date.now().toString(), type: action.payload });
     },
-    deleteDirectory: (state, action) => {
-      return state.filter((item) => item !== action.payload);
-    },
+    deleteDirectory: (state, action) =>
+      state.filter((dir) => dir._id !== action.payload),
     editDirectory: (state, action) => {
-      const { index, item } = action.payload;
-      if (index) state[index] = item;
-      console.log(index);
+      const { index, type } = action.payload;
+      if (index >= 0) state[index].type = type;
     },
   },
 });
 
-export default directoriesSlice.reducer;
 export const { addDirectory, deleteDirectory, editDirectory } =
   directoriesSlice.actions;
+export default directoriesSlice.reducer;
