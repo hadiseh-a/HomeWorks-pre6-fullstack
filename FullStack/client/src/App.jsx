@@ -1,0 +1,35 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./styles/App.css";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
+import AllTasks from "./pages/AllTasks";
+import ImportantTasks from "./pages/ImportantTasks";
+import CompletedTasks from "./pages/CompletedTasks";
+import UnCompletedTasks from "./pages/UncompletedTasks";
+import { Container } from "react-bootstrap";
+import DirectoryPage from "./pages/DirectoryPage";
+
+function App() {
+  return (
+    <div className=" d-flex ">
+      <BrowserRouter>
+        <Sidebar />
+        <Container fluid className="flex-grow-1">
+          <Topbar className="d-lg-inline" />
+
+          <Container fluid>
+            <Routes>
+              <Route path="/" element={<AllTasks />} />
+              <Route path="/important" element={<ImportantTasks />} />
+              <Route path="/completed" element={<CompletedTasks />} />
+              <Route path="/uncompleted" element={<UnCompletedTasks />} />
+              <Route path="/dir/:type" element={<DirectoryPage />} />
+            </Routes>
+          </Container>
+        </Container>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
