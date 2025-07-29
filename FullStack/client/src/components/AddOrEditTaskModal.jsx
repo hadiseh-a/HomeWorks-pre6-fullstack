@@ -15,13 +15,13 @@ const AddOrEditTaskModal = ({
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: defaultTask || {
-      title: "",
-      description: "",
-      completed: false,
-      important: false,
-      deadline: new Date().toISOString().split("T")[0],
-      dirId: directories[0]?._id || "",
+    defaultValues: {
+      title: defaultTask?.title || "",
+      description: defaultTask?.description || "",
+      completed: defaultTask?.completed ?? false,
+      important: defaultTask?.important ?? false,
+      deadline: defaultTask?.deadline || new Date().toISOString().split("T")[0],
+      dirId: defaultTask?.dirId || directories[0]?._id || "",
     },
   });
 

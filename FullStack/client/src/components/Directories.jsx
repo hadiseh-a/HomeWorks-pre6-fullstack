@@ -16,18 +16,18 @@ const Directories = ({ onLinkClick }) => {
 
   const [modalType, setModalType] = useState(null);
   const [index, setIndex] = useState(-1);
-  const [dirType, setDirType] = useState("");
+  const [directory, setDirectory] = useState({ _id: "", type: "" });
 
   const open = (type, idx = -1) => {
     setModalType(type);
     setIndex(idx);
-    setDirType(type === "edit" ? directories[idx].type : "");
+    setDirectory(type === "edit" ? directories[idx] : "");
   };
   const close = () => setModalType(null);
 
   const handleSave = () => {
-    if (modalType === "create") dispatch(addDirectory(dirType));
-    if (modalType === "edit") dispatch(editDirectory({ index, type: dirType }));
+    if (modalType === "create") dispatch(addDirectory(directory.type));
+    if (modalType === "edit") dispatch(editDirectory(directory));
     close();
   };
   const handleDelete = () => {
@@ -97,8 +97,10 @@ const Directories = ({ onLinkClick }) => {
           <Form.Control
             type="text"
             placeholder="Enter a directory name"
-            value={dirType}
-            onChange={(e) => setDirType(e.target.value)}
+            value={directory.type}
+            onChange={(e) =>
+              setDirectory({ _id: directory._id, type: e.target.value })
+            }
             className="rounded-3"
           />
         </Modal.Body>

@@ -19,19 +19,18 @@ const TaskCard = ({
   index,
 }) => {
   const dispatch = useDispatch();
-  const [isStarred, setIsStarred] = useState(important);
-  const [isCompleted, setIsCompleted] = useState(completed);
+
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
   const toggleStar = () => {
-    setIsStarred((prev) => !prev);
-    dispatch(editTask({ id, data: { important: !isStarred } }));
+    dispatch(editTask({ id, data: { important: !important } }));
   };
+
   const toggleCompleted = () => {
-    setIsCompleted((prev) => !prev);
-    dispatch(editTask({ id, data: { completed: !isCompleted } }));
+    dispatch(editTask({ id, data: { completed: !completed } }));
   };
+
   const handleDelete = () => {
     dispatch(deleteTask(id));
     setShowDeleteModal(false);
@@ -72,17 +71,17 @@ const TaskCard = ({
 
         <div className="d-flex justify-content-between align-items-center mt-3 pt-2 border-top ">
           <Badge
-            bg={isCompleted ? "success" : "warning"}
-            color={isCompleted ? "success" : "warning"}
+            bg={completed ? "success" : "warning"}
+            color={completed ? "success" : "warning"}
             className="px-2 py-1 rounded-5 "
             style={{ cursor: "pointer" }}
             onClick={toggleCompleted}
           >
-            {isCompleted ? "Completed" : "Uncompleted"}
+            {completed ? "Completed" : "Uncompleted"}
           </Badge>
           <div className="d-flex justify-content-center align-items-center align-content-center">
             <Button variant="link" className="p-0 text-black">
-              {isStarred ? (
+              {important ? (
                 <StarFill color="red" onClick={toggleStar} />
               ) : (
                 <Star
@@ -140,13 +139,13 @@ const TaskCard = ({
         show={showEditModal}
         handleClose={() => setShowEditModal(false)}
         handleSave={(data) => dispatch(editTask({ id, data }))}
-        directories={directories} // اگر در HoC
+        directories={directories}
         defaultTask={{
           title: title,
           description: description,
           deadline: deadline.split("T")[0],
-          completed: isCompleted,
-          important: isStarred,
+          completed: completed,
+          important: important,
           dirId: directory._id,
         }}
         title="Edit Task"

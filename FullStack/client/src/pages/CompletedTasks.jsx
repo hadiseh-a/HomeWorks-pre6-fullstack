@@ -10,21 +10,18 @@ function CompletedTasks() {
 
   const searchTerm = useSelector((state) => state.tasks.searchTerm);
   const allTasks = useSelector((state) => state.tasks.taskData);
+  const directories = useSelector((state) => state.directories);
 
   useEffect(() => {
     const completedTasks = filterdTasksby(allTasks, "completed", true);
-    setTasks(completedTasks);
-  }, [allTasks]);
-
-  useEffect(() => {
-    const searchedTask = sherchingTask(allTasks, searchTerm);
+    const searchedTask = sherchingTask(completedTasks, searchTerm);
     setTasks(searchedTask);
   }, [searchTerm, allTasks]);
 
   return (
     <Container fluid>
       <Header title={`Completed Tasks (${tasks.length} tasks)`} />
-      <ShowCards tasks={tasks} />
+      <ShowCards tasks={tasks} directories={directories} />
     </Container>
   );
 }

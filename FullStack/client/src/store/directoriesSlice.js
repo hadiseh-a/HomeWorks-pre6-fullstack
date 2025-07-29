@@ -10,7 +10,8 @@ const directoriesSlice = createSlice({
     deleteDirectory: (state, action) =>
       state.filter((dir) => dir._id !== action.payload),
     editDirectory: (state, action) => {
-      const { index, type } = action.payload;
+      const { _id, type } = action.payload;
+      const index = state.findIndex((t) => t._id === _id);
       if (index >= 0) state[index].type = type;
     },
   },

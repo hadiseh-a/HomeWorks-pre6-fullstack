@@ -1,30 +1,52 @@
-import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import Header from "../components/Header";
+import { useEffect, useState } from "react";
+import ShowCards from "../components/ShowCards";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import ShowCards from "../components/ShowCards";
-import Header from "../components/Header";
-import { sherchingTask } from "../utils/filtering";
+import {
+  filterdTasksby,
+  orderingTask,
+  sherchingTask,
+} from "../utils/filtering";
 
-export default function DirectoryPage() {
-  const { type } = useParams();
-  const dirs = useSelector((s) => s.directories);
-  const allTasks = useSelector((s) => s.tasks.taskData);
-  const searchTerm = useSelector((s) => s.tasks.searchTerm);
-
+function DirectoryPage() {
   const [tasks, setTasks] = useState([]);
-  const dir = dirs.find((d) => d.type.toLowerCase() === type);
+
+  const { type } = useParams();
+
+  const allTasks = useSelector((state) => state.tasks.taskData);
+  const searchTerm = useSelector((state) => state.tasks.searchTerm);
+  const orderBy = useSelector((state) => state.tasks.orderBy);
+  const directories = useSelector((state) => state.directories);
+
+  const findDirectory = directories.find(
+    (directory) => directory.type.toLowerCase() === type?.toLowerCase()
+  );
 
   useEffect(() => {
-    if (!dir) return;
-    let filtered = allTasks.filter((t) => t.dirId === dir._id);
-    filtered = sherchingTask(filtered, searchTerm);
-    setTasks(filtered);
-  }, [allTasks, searchTerm, dir]);
+    if (!findDirectory) return;
+
+    const filteredTasks = filterdTasksby(allTasks, "dirId", findDirectory._id);
+    const searchedTask = sherchingTask(filteredTasks, searchTerm);
+    const orderedTasks = orderingTask(searchedTask, orderBy);
+    setTasks(orderedTasks);
+  }, [allTasks, searchTerm, type, findDirectory,orderBy]);
+
+  if (!findDirectory) {
+    return (
+      <Container className="mt-4 text-center">
+        <h4 className="text-danger">Directory not found</h4>
+      </Container>
+    );
+  }
 
   return (
-    <div>
-      <Header title={`${dir?.type}'s Tasks (${tasks.length} tasks)`} />
-      <ShowCards tasks={tasks} />
-    </div>
+    <Container>
+      <Header title={`${findDirectory.type}'s Tasks (${tasks.length} tasks)`} />
+      <ShowCards tasks={tasks} directories={directories} />
+    </Container>
   );
 }
+
+export default DirectoryPage;

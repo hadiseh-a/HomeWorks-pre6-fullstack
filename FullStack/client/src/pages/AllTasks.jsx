@@ -14,14 +14,11 @@ function AllTasks() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const searchedTasks = sherchingTask(allTasks, searchTerm);
-    setTasks(searchedTasks);
-  }, [searchTerm, allTasks]);
-
-  useEffect(() => {
     const orderedTasks = orderingTask(allTasks, orderBy);
-    setTasks(orderedTasks);
-  }, [orderBy, allTasks]);
+    const searchedTasks = sherchingTask(orderedTasks, searchTerm);
+
+    setTasks(searchedTasks);
+  }, [orderBy, allTasks, searchTerm]);
 
   return (
     <Container fluid>

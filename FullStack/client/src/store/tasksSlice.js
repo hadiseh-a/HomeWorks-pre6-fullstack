@@ -1,24 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
-import sample from "../assets/sample-data.json";
+import taskData from "../assets/sample-data.json";
 
 const taskSlice = createSlice({
-  name: "tasks",
-  initialState: { taskData: sample, searchTerm: "", orderBy: "" },
+  name: "task",
+  initialState: { taskData, searchTerm: "", orderBy: "" },
   reducers: {
     addTask: (state, action) => {
-      state.taskData.unshift({
-        _id: Date.now().toString(),
-        ...action.payload,
-      });
+      state.taskData.unshift({ _id: Date.now(), ...action.payload });
     },
     deleteTask: (state, action) => {
-      state.taskData = state.taskData.filter((t) => t._id !== action.payload);
+      state.taskData = state.taskData.filter(
+        (item) => item._id !== action.payload
+      );
     },
     editTask: (state, action) => {
       const { id, data } = action.payload;
-      const i = state.taskData.findIndex((t) => t._id === id);
-      if (i !== -1) {
-        Object.assign(state.taskData[i], data);
+      const index = state.taskData.findIndex((task) => task._id === id);
+
+      if (index !== -1) {
+        if (typeof data.title !== "undefined")
+          state.taskData[index].title = data.title;
+        if (typeof data.description !== "undefined")
+          state.taskData[index].description = data.description;
+        if (typeof data.deadline !== "undefined")
+          state.taskData[index].deadline = data.deadline;
+        if (typeof data.completed !== "undefined")
+          state.taskData[index].completed = data.completed;
+        if (typeof data.important !== "undefined")
+          state.taskData[index].important = data.important;
+        if (typeof data.dirId !== "undefined")
+          state.taskData[index].dirId = data.dirId;
       }
     },
     searchTask: (state, action) => {
