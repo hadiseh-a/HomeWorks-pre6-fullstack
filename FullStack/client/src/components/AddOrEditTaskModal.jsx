@@ -15,13 +15,13 @@ const AddOrEditTaskModal = ({
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: defaultTask || {
-      title: "",
-      description: "",
-      completed: false,
-      important: false,
-      deadline: new Date().toISOString().split("T")[0],
-      directory: directories[0] || "",
+    defaultValues: {
+      title: defaultTask?.title || "",
+      description: defaultTask?.description || "",
+      completed: defaultTask?.completed ?? false,
+      important: defaultTask?.important ?? false,
+      deadline: defaultTask?.deadline || new Date().toISOString().split("T")[0],
+      dirId: defaultTask?.dirId || directories[0]?._id || "",
     },
   });
 
@@ -45,8 +45,14 @@ const AddOrEditTaskModal = ({
               placeholder="e.g. study for the test"
               {...register("title", {
                 required: "Title is required",
-                maxLength: { value: 50, message: "Max 50 characters" },
-                minLength: { value: 3, message: "Min 3 characters" },
+                maxLength: {
+                  value: 50,
+                  message: "can't be maore than 50 characters",
+                },
+                minLength: {
+                  value: 3,
+                  message: "can;t be less than 3 characters",
+                },
               })}
               isInvalid={errors.title}
             />
@@ -56,7 +62,7 @@ const AddOrEditTaskModal = ({
           </Form.Group>
 
           <Form.Group className="mb-1">
-            <Form.Label>Date</Form.Label>
+            <Form.Label>Deadline</Form.Label>
             <Form.Control
               type="date"
               {...register("deadline", { required: "Date is required" })}
@@ -79,10 +85,10 @@ const AddOrEditTaskModal = ({
 
           <Form.Group className="mb-1">
             <Form.Label>Select a directory</Form.Label>
-            <Form.Select {...register("directory")}>
+            <Form.Select {...register("dirId", { required: true })}>
               {directories.map((dir) => (
-                <option key={dir} value={dir}>
-                  {dir}
+                <option key={dir._id} value={dir._id}>
+                  {dir.type}
                 </option>
               ))}
             </Form.Select>

@@ -6,8 +6,8 @@ import AllTasks from "./pages/AllTasks";
 import ImportantTasks from "./pages/ImportantTasks";
 import CompletedTasks from "./pages/CompletedTasks";
 import UnCompletedTasks from "./pages/UncompletedTasks";
-import Directories from "./pages/Directories";
 import { Container } from "react-bootstrap";
+import DirectoryPage from "./pages/DirectoryPage";
 
 function App() {
   return (
@@ -23,10 +23,7 @@ function App() {
               <Route path="/important" element={<ImportantTasks />} />
               <Route path="/completed" element={<CompletedTasks />} />
               <Route path="/uncompleted" element={<UnCompletedTasks />} />
-              <Route
-                path="/dir/:directories"
-                element={<Directories  />}
-              />
+              <Route path="/dir/:type" element={<DirectoryPage />} />
             </Routes>
           </Container>
         </Container>

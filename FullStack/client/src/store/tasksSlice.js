@@ -28,6 +28,8 @@ const taskSlice = createSlice({
           state.taskData[index].completed = data.completed;
         if (typeof data.important !== "undefined")
           state.taskData[index].important = data.important;
+        if (typeof data.dirId !== "undefined")
+          state.taskData[index].dirId = data.dirId;
       }
     },
     searchTask: (state, action) => {

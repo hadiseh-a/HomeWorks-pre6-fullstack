@@ -9,26 +9,21 @@ function AllTasks() {
   const searchTerm = useSelector((state) => state.tasks.searchTerm);
   const orderBy = useSelector((state) => state.tasks.orderBy);
   const allTasks = useSelector((state) => state.tasks.taskData);
+  const directories = useSelector((state) => state.directories);
 
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const searchedTasks = sherchingTask(allTasks, searchTerm);
-    setTasks(searchedTasks);
-  }, [searchTerm, allTasks]);
-
-  useEffect(() => {
     const orderedTasks = orderingTask(allTasks, orderBy);
-    setTasks(orderedTasks);
-  }, [orderBy, allTasks]);
+    const searchedTasks = sherchingTask(orderedTasks, searchTerm);
+
+    setTasks(searchedTasks);
+  }, [orderBy, allTasks, searchTerm]);
 
   return (
     <Container fluid>
       <Header title={`All Tasks (${tasks.length} tasks)`} />
-      <ShowCards tasks={tasks} />
-      {console.log(
-        `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()}`
-      )}
+      <ShowCards tasks={tasks} directories={directories} />
     </Container>
   );
 }
