@@ -26,7 +26,7 @@ const Directories = ({ onLinkClick }) => {
   const close = () => setModalType(null);
 
   const handleSave = () => {
-    if (modalType === "create") dispatch(addDirectory(directory.type));
+    if (modalType === "create") dispatch(addDirectory(directory.name));
     if (modalType === "edit") dispatch(editDirectory(directory));
     close();
   };
@@ -46,13 +46,13 @@ const Directories = ({ onLinkClick }) => {
             {directories.map((dir, idx) => (
               <NavLink
                 key={dir._id}
-                to={`/dir/${dir.type.toLowerCase()}`}
+                to={`/dir/${dir.name.toLowerCase()}`}
                 onClick={onLinkClick}
                 className="directory-link position-relative"
                 state={dir}
               >
-                {dir.type}
-                {dir.type !== "Main" && (
+                {dir.name}
+                {dir.name !== "Main" && (
                   <span className="dir-actions">
                     <Pencil
                       className="me-2 icon-action"
@@ -97,7 +97,7 @@ const Directories = ({ onLinkClick }) => {
           <Form.Control
             type="text"
             placeholder="Enter a directory name"
-            value={directory.type}
+            value={directory.name}
             onChange={(e) =>
               setDirectory({ _id: directory._id, type: e.target.value })
             }

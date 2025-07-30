@@ -21,7 +21,7 @@ function DirectoryPage() {
   const directories = useSelector((state) => state.directories);
 
   const findDirectory = directories.find(
-    (directory) => directory.type.toLowerCase() === type?.toLowerCase()
+    (directory) => directory.name.toLowerCase() === type?.toLowerCase()
   );
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function DirectoryPage() {
 
   return (
     <Container>
-      <Header title={`${findDirectory.type}'s Tasks (${tasks.length} tasks)`} />
+      <Header title={`${findDirectory.name}'s Tasks (${tasks.length} tasks)`} />
       <ShowCards tasks={tasks} directories={directories} />
     </Container>
   );

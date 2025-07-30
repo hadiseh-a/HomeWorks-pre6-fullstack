@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const directoriesSlice = createSlice({
   name: "directories",
-  initialState: [{ _id: "1a", type: "Main" }],
+  initialState: [{ _id: "1a", name: "Main" }],
   reducers: {
     addDirectory: (state, action) => {
       state.push({ _id: Date.now().toString(), type: action.payload });
@@ -12,7 +12,7 @@ const directoriesSlice = createSlice({
     editDirectory: (state, action) => {
       const { _id, type } = action.payload;
       const index = state.findIndex((t) => t._id === _id);
-      if (index >= 0) state[index].type = type;
+      if (index >= 0) state[index].name = type;
     },
   },
 });

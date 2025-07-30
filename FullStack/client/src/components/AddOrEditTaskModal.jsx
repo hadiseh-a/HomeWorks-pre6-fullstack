@@ -88,7 +88,7 @@ const AddOrEditTaskModal = ({
             <Form.Select {...register("dirId", { required: true })}>
               {directories.map((dir) => (
                 <option key={dir._id} value={dir._id}>
-                  {dir.type}
+                  {dir.name}
                 </option>
               ))}
             </Form.Select>

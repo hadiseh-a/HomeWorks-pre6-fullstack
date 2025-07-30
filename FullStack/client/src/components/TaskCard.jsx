@@ -51,7 +51,7 @@ const TaskCard = ({
             className="text-danger px-3 py-1 rounded-top-3 "
             style={{ backgroundColor: "#fca7a7" }}
           >
-            {directory.type}
+            {directory.name}
           </h6>
         </div>
       </div>
