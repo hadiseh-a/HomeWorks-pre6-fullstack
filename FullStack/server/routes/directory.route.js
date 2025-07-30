@@ -31,7 +31,7 @@ router.get("/", readDirectories);
  * @Status : PUBLIC
  * @Description : Retrieve all tasks for a specific directory
  */
-router.get("/tasks", readTasksByDirectory);
+router.get("/:dirId/tasks", readTasksByDirectory);
 
 /**
  * @URL : /api/directories/:id

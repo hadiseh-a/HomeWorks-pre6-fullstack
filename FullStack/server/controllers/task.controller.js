@@ -27,7 +27,7 @@ export const updateTask = async (req, res) => {
     } = req;
 
     const updatedTask = await Task.findByIdAndUpdate(id, body, { new: true });
-    res.status(204).json(updatedTask);
+    res.status(200).json(updatedTask);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -39,7 +39,7 @@ export const deleteTask = async (req, res) => {
       params: { id },
     } = req;
     const deletedTask = await Task.findByIdAndDelete(id);
-    res.status(204).json(deletedTask);
+    res.status(200).json(deletedTask);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
