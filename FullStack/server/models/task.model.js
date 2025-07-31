@@ -11,6 +11,12 @@ const TaskSchema = new Schema({
     ref: "Directory",
     require: true,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    require: true,
+    unique: true,
+  },
 });
 
 export default model("Task", TaskSchema);
