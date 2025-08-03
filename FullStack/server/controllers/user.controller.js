@@ -24,7 +24,7 @@ export const createUser = async (req, res) => {
       token: crypto.randomBytes(32).toString("hex"),
     });
 
-    const message = `${process.env.BASE_URL}/users/verify/${newUser._id}/${newVerifyEmail.token}`;
+    const message = `${process.env.BASE_URL}/api/users/verify/${newUser._id}/${newVerifyEmail.token}`;
 
     await senderEmail(newUser.email, "verify email for to do app", message);
 
