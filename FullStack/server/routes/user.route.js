@@ -45,7 +45,7 @@ router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 
 /**
- * @URL :  /api/users/:id/tasks
+ * @URL :  /api/users/tasks
  * @Method : GET
  * @Status : PUBLIC
  * @Description : Retrieve all tasks associated with a specific user. The `id` parameter should be the user's unique identifier

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { logger } from "./middlewares/logger.js";
 import userRouter from "./routes/user.route.js";
 import taskRouter from "./routes/task.route.js";
@@ -11,7 +12,13 @@ const PORT = process.env.PORT || 5050;
 
 const app = express();
 
-app.use(logger, cors(), express.json(), express.urlencoded({ extended: true }));
+app.use(
+  logger,
+  cors(),
+  express.json(),
+  express.urlencoded({ extended: true }),
+  cookieParser()
+);
 
 app.use("/api/users", userRouter);
 app.use("/api/tasks", taskRouter);
