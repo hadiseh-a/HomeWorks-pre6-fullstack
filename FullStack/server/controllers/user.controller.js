@@ -24,7 +24,7 @@ export const createUser = async (req, res) => {
       token: crypto.randomBytes(32).toString("hex"),
     });
 
-    const message = `${process.env.BASE_URL}/user/verify/${newUser._id}/${newVerifyEmail.token}`;
+    const message = `${process.env.BASE_URL}/users/verify/${newUser._id}/${newVerifyEmail.token}`;
 
     await senderEmail(newUser.email, "verify email for to do app", message);
 
@@ -42,8 +42,8 @@ export const verifyUserEmail = async (req, res) => {
       params: { id: userId, token },
     } = req;
 
-    const user = User.findById(userId);
-    const verifyToken = VerifyEmail.findOne({ userId: userId });
+    const user = await User.findById(userId);
+    const verifyToken = await VerifyEmail.findOne({ userId: userId });
 
     if (!user || !verifyToken) {
       return res.status(400).json({ error: "invalid link" });
@@ -54,7 +54,7 @@ export const verifyUserEmail = async (req, res) => {
 
     user.verified = true;
     await user.save();
-    verifyToken.deleteOne();
+    await verifyToken.deleteOne();
 
     res
       .status(200)
