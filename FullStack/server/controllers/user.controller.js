@@ -32,7 +32,7 @@ export const createUser = async (req, res) => {
       message: "User registered successfully. Please Verify Email",
     });
   } catch (error) {
-    res.status(500).json({ msg: error });
+    res.status(500).json({ msg: error.message });
   }
 };
 

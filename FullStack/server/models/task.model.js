@@ -7,7 +7,7 @@ const TaskSchema = new Schema({
   important: Boolean,
   deadline: Date,
   dirId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Directory",
     required: true,
   },
