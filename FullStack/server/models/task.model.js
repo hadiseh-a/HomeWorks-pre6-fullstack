@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const TaskSchema = new Schema({
   title: String,
@@ -7,9 +7,15 @@ const TaskSchema = new Schema({
   important: Boolean,
   deadline: Date,
   dirId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Directory",
+    required: true,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
     require: true,
+    uniqued: true,
   },
 });
 

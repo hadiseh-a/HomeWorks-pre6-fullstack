@@ -4,4 +4,4 @@ const DirectorySchema = new Schema({
   name: String,
 });
 
-export default model("directory", DirectorySchema);
+export default model("Directory", DirectorySchema);

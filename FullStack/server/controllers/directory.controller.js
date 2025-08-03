@@ -23,9 +23,9 @@ export const readDirectories = async (req, res) => {
 export const readTasksByDirectory = async (req, res) => {
   try {
     const {
-      params: { dirId },
+      params: { id },
     } = req;
-    const tasksOfDirectory = await Task.find({ dirId: dirId });
+    const tasksOfDirectory = await Task.find({ dirId: id });
     res.status(200).json(tasksOfDirectory);
   } catch (error) {
     res.status(400).json({ msg: error.message });
@@ -38,9 +38,13 @@ export const updateDirectory = async (req, res) => {
       body,
       params: { id },
     } = req;
-    const updatedDirectory = await Directory.findByIdAndUpdate(id, body, {
-      new: true,
-    });
+    const updatedDirectory = await Directory.findByIdAndUpdate(
+      id,
+      { ...body, _id: id },
+      {
+        new: true,
+      }
+    );
     res.status(200).json(updatedDirectory);
   } catch (error) {
     res.status(400).json({ msg: error.message });
@@ -52,7 +56,7 @@ export const deleteDirectory = async (req, res) => {
       params: { id },
     } = req;
     const deletedDirectory = await Directory.findByIdAndDelete(id);
-    res.status(200).json(deletedDirectory);
+    res.status(202).json(deletedDirectory);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
