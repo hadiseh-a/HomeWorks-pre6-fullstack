@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { logger } from "./middlewares/logger.js";
+import userRouter from "./routes/user.route.js";
 import taskRouter from "./routes/task.route.js";
 import directoryRouter from "./routes/directory.route.js";
 import { connect } from "mongoose";
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(logger, cors(), express.json(), express.urlencoded({ extended: true }));
 
+app.use("/api/users", userRouter);
 app.use("/api/tasks", taskRouter);
 app.use("/api/directories", directoryRouter);
 
