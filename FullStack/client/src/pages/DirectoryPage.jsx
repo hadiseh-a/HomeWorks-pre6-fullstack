@@ -13,7 +13,7 @@ import {
 function DirectoryPage() {
   const [tasks, setTasks] = useState([]);
 
-  const { type } = useParams();
+  const { name } = useParams();
 
   const allTasks = useSelector((state) => state.tasks.taskData);
   const searchTerm = useSelector((state) => state.tasks.searchTerm);
@@ -21,7 +21,7 @@ function DirectoryPage() {
   const directories = useSelector((state) => state.directories);
 
   const findDirectory = directories.find(
-    (directory) => directory.name.toLowerCase() === type?.toLowerCase()
+    (directory) => directory.name.toLowerCase() === name?.toLowerCase()
   );
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function DirectoryPage() {
     const searchedTask = sherchingTask(filteredTasks, searchTerm);
     const orderedTasks = orderingTask(searchedTask, orderBy);
     setTasks(orderedTasks);
-  }, [allTasks, searchTerm, type, findDirectory,orderBy]);
+  }, [allTasks, searchTerm, name, findDirectory,orderBy]);
 
   if (!findDirectory) {
     return (

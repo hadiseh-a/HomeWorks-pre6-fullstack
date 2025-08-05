@@ -67,3 +67,26 @@ body {
 .card:first-child div button .firstOne {
   color: #fff !important;
 }
+
+.auth-box {
+  width: 100%;
+  max-width: 500px;
+  background-color: #f5edf7;
+}
+.auth-box button {
+  background-color: #9255dd;
+  border: none;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  color: white;
+}
+
+.auth-box button:hover {
+  background-color: #60398f;
+}
